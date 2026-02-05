@@ -1,0 +1,28 @@
+server:
+  image:
+    repository: hashicorp/vault
+    tag: "1.21.2"
+
+  standalone:
+    enabled: true
+
+  config: |
+    ui = true
+
+    listener "tcp" {
+      address     = "0.0.0.0:8200"
+      tls_disable = true
+    }
+
+    storage "file" {
+      path = "/vault/data"
+    }
+
+    api_addr = "http://vault.vault.svc:8200"
+
+  dataStorage:
+    enabled: true
+    size: 1Gi
+
+ui:
+  enabled: true
