@@ -3,9 +3,7 @@ server:
     repository: hashicorp/vault
     tag: "1.21.2"
 
-  replicas: 2
-
-  affinity: {}
+  replicas: 1
 
   standalone:
     enabled: false
