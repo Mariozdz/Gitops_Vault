@@ -6,10 +6,3 @@ resources:
 
 patchesStrategicMerge:
   - namespace-patch.yaml
-
-helmCharts:
-  - name: vault
-    repo: https://helm.releases.hashicorp.com
-    version: "0.32.0"
-    releaseName: vault-dev
-    namespace: vault-dev
