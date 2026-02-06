@@ -5,6 +5,11 @@ server:
 
   replicas: 2
 
+  affinity: {}
+
+  standalone:
+    enabled: false
+
   ha:
     enabled: true
     raft:
