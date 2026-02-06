@@ -3,22 +3,30 @@ server:
     repository: hashicorp/vault
     tag: "1.21.2"
 
-  standalone:
+  replicas: 2
+
+  ha:
     enabled: true
+    raft:
+      enabled: true
+      setNodeId: true
 
-  config: |
-    ui = true
+      config: |
+        ui = true
 
-    listener "tcp" {
-      address     = "0.0.0.0:8200"
-      tls_disable = true
-    }
+        listener "tcp" {
+          address     = "0.0.0.0:8200"
+          cluster_address = "0.0.0.0:8201"
+          tls_disable = true
+        }
 
-    storage "file" {
-      path = "/vault/data"
-    }
+        storage "raft" {
+          path = "/vault/data"
+        }
 
-    api_addr = "http://vault.vault.svc:8200"
+        api_addr = "http://vault.vault.svc:8200"
+        service_registration "kubernetes" {}
+
 
   dataStorage:
     enabled: true
