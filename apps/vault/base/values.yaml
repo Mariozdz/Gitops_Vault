@@ -12,6 +12,7 @@ server:
     enabled: true
     raft:
       enabled: true
+      replicas: 1
       setNodeId: true
 
       config: |
