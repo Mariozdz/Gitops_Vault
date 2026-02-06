@@ -6,17 +6,18 @@ metadata:
 spec:
   project: default
 
-  source:
-    repoURL: https://github.com/Mariozdz/Gitops_Vault.git
-    targetRevision: main
-    path: apps/vault/base
+  sources:
+  - repoURL: https://helm.releases.hashicorp.com
+    chart: vault
+    targetRevision: 0.32.0
     helm:
       releaseName: vault
       valueFiles:
-        - values.yaml
-      chart: vault
-      repoURL: https://helm.releases.hashicorp.com
-      targetRevision: 0.32.0
+        - $values/apps/vault/base/values.yaml
+
+  - repoURL: https://github.com/Mariozdz/Gitops_Vault.git
+    targetRevision: main
+    ref: values
 
   destination:
     server: https://kubernetes.default.svc
