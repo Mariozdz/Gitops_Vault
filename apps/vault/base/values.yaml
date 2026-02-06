@@ -10,9 +10,9 @@ server:
 
   ha:
     enabled: true
+    replicas: 1
     raft:
       enabled: true
-      replicas: 1
       setNodeId: true
 
       config: |
