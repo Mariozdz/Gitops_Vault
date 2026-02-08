@@ -13,7 +13,7 @@ server:
       secret:
         secretName: vault-tls
 
-  extraVolumeMount:
+  extraVolumeMounts:
     - name: vault-tls
       mountPath: /vault/ssl
       readOnly: true
