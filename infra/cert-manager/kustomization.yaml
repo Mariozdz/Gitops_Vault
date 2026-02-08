@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
   - issuer.yaml
   - certificate.yaml
+  - vault-tls-certificate.yaml
