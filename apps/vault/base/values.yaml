@@ -13,7 +13,7 @@ server:
       secret:
         secretName: vault-tls
 
-  extraVolumesMount:
+  extraVolumeMount:
     - name: vault-tls
       mountPath: /vault/ssl
       readOnly: true
@@ -33,7 +33,7 @@ server:
           cluster_address = "0.0.0.0:8201"
 
           tls_cert_file = "/vault/ssl/tls.crt"
-          tls_kye_file = "/vault/ssl/tls.key"
+          tls_key_file = "/vault/ssl/tls.key"
         }
 
         storage "raft" {
