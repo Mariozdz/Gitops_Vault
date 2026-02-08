@@ -8,6 +8,16 @@ server:
   standalone:
     enabled: false
 
+  extraVolumes:
+    - name: vault-tls
+      secret:
+        secretName: vault-tls
+
+  extraVolumesMount:
+    - name: vault-tls
+      mountPath: /vault/ssl
+      readOnly: true
+
   ha:
     enabled: true
     replicas: 1
@@ -21,14 +31,16 @@ server:
         listener "tcp" {
           address     = "0.0.0.0:8200"
           cluster_address = "0.0.0.0:8201"
-          tls_disable = true
+
+          tls_cert_file = "/vault/ssl/tls.crt"
+          tls_kye_file = "/vault/ssl/tls.key"
         }
 
         storage "raft" {
           path = "/vault/data"
         }
 
-        api_addr = "http://vault.vault.svc:8200"
+        api_addr = "https://vault.vault.svc:8200"
         service_registration "kubernetes" {}
 
 
