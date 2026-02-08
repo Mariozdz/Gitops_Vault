@@ -8,12 +8,12 @@ server:
   standalone:
     enabled: false
 
-  extraVolumes:
+  volumes:
     - name: vault-tls
       secret:
         secretName: vault-tls
 
-  extraVolumeMounts:
+  volumeMounts:
     - name: vault-tls
       mountPath: /vault/ssl
       readOnly: true
@@ -34,6 +34,7 @@ server:
 
           tls_cert_file = "/vault/ssl/tls.crt"
           tls_key_file = "/vault/ssl/tls.key"
+          tls_client_ca_file = "/vault/ssl/ca.crt"
         }
 
         storage "raft" {
