@@ -15,13 +15,13 @@ server:
     runAsGroup: 1000
     fsGroup: 1000
 
-  extraVolumes:
+  volumes:
     - name: vault-tls
       secret:
         secretName: vault-tls
         defaultMode: 0400
 
-  extraVolumeMounts:
+  volumeMounts:
     - name: vault-tls
       mountPath: /vault/ssl
       readOnly: true
