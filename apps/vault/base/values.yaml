@@ -1,3 +1,6 @@
+global:
+  tlsDisable: false
+
 server:
   image:
     repository: hashicorp/vault
@@ -12,6 +15,7 @@ server:
     - name: vault-tls
       secret:
         secretName: vault-tls
+        defaultMode: 0400
 
   volumeMounts:
     - name: vault-tls
@@ -34,7 +38,6 @@ server:
 
           tls_cert_file = "/vault/ssl/tls.crt"
           tls_key_file = "/vault/ssl/tls.key"
-          tls_client_ca_file = "/vault/ssl/ca.crt"
         }
 
         storage "raft" {
