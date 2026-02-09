@@ -6,10 +6,14 @@ server:
     repository: hashicorp/vault
     tag: "1.21.2"
 
-  replicas: 1
-
   standalone:
     enabled: false
+
+  securityContext:
+    runAsNonRoot: true
+    runAsUser: 100
+    runAsGroup: 1000
+    fsGroup: 1000
 
   extraVolumes:
     - name: vault-tls
@@ -46,7 +50,6 @@ server:
 
         api_addr = "https://vault.vault.svc:8200"
         service_registration "kubernetes" {}
-
 
   dataStorage:
     enabled: true
