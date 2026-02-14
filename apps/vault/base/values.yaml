@@ -2,10 +2,15 @@ global:
   tlsDisable: false
 
 server:
-  podLabels:
+  extraLabels:
     app.kubernetes.io/name-test: vault-server
     app.kubernetes.io/component: server
     security-tier: critical
+
+  service:
+    labels:
+      app.kubernetes.io/name-svc-test: vault-svc-test
+      security-tier: critical
 
   image:
     repository: hashicorp/vault
