@@ -67,7 +67,7 @@ server:
 
 injector:
   enabled: true
-  podLabels:
+  extraLabels:
     app.kubernetes.io/name-test: vault-agent-injector-test
     security-tier: critical
 
