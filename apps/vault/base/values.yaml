@@ -65,5 +65,11 @@ server:
     enabled: true
     size: 1Gi
 
+injector:
+  enabled: true
+  podLabels:
+    app.kubernetes.io/name-test: vault-agent-injector-test
+    security-tier: critical
+
 ui:
   enabled: true
