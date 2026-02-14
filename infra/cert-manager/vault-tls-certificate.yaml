@@ -13,3 +13,6 @@ spec:
     - vault.vault
     - vault.vault.svc
     - vault.vault.svc.cluster.local
+    - https://127.0.0.1
+  ipAddresses: 
+    - 127.0.0.1

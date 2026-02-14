@@ -1,5 +1,10 @@
 installCRDs: true
 
+podLabels:
+  app.kubernetes.io/name: cert-manager
+  app.kubernetes.io/component: controller
+  security-tier: platform
+
 replicaCount: 1
 
 podDisruptionBudget:
