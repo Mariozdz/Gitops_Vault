@@ -3,14 +3,9 @@ global:
 
 server:
   podLabels:
-    app.kubernetes.io/name: vault
+    app.kubernetes.io/name-test: vault-server
     app.kubernetes.io/component: server
     security-tier: critical
-
-  service:
-    labels:
-      app.kubernetes.io/name: vault
-      security-tier: critical
 
   image:
     repository: hashicorp/vault
