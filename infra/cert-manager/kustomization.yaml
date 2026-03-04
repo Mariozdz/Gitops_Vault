@@ -5,7 +5,5 @@ resources:
   # - issuer.yaml
   # - certificate.yaml
   # - vault-tls-certificate.yaml
-  - ./mtls/cluster-issuer-self.yaml
   - ./mtls/cluster-issuer-ca.yaml
-  - ./mtls/root-ca.yaml
   - ./mtls/vault-server-cert.yaml

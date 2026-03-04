@@ -4,7 +4,7 @@ metadata:
   name: vault-server-cert
   namespace: vault
   annotations:
-    argocd.argoproj.io/sync-wave: "3"
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   secretName: vault-tls
   issuerRef:
