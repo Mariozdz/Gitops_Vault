@@ -1,0 +1,16 @@
+hubble:
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+
+ipam:
+  mode: kubernetes
+
+kubeProxyReplacement: true
+
+k8sServiceHost: secure-cluster-control-plane
+k8sServicePort: 6443
+
+nodeinit:
+  enabled: true
