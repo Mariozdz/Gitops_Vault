@@ -6,4 +6,4 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   ca:
-    secretName: vault-root-ca-secret
+    secretName: intermediate-ca-secret
