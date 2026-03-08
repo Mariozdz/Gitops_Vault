@@ -2,10 +2,4 @@ app:
   trust:
     namespace: cert-manager
 
-secretTargets:
-  enabled: true
-
-configMapTargets:
-  enabled: true
-
 replicaCount: 1
