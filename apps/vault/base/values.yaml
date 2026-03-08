@@ -30,10 +30,17 @@ server:
       secret:
         secretName: vault-tls
         defaultMode: 0400
+    - name: cluster-trust
+      configMap:
+        name: cluster-trust
 
   volumeMounts:
     - name: vault-tls
       mountPath: /vault/ssl
+      readOnly: true
+    - name: cluster-trust
+      mountPath: /etc/ssl/certs/cluster-ca.pem
+      subPath: ca.crt
       readOnly: true
 
   ha:
