@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: curl-application
+  namespace: argocd
+  # annotations:
+  #   argocd.argoproj.io/sync-wave: "0"
+spec:
+  source:
+    repoURL: https://github.com/Mariozdz/Gitops_Vault.git
+    path: apps/curl-app
+    targetRevision: HEAD
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: curl-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+      - ServerSideApply=true

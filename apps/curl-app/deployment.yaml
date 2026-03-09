@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: curl-app
+  namespace: curl-app
+  labels:
+    app: curl-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      security-tier: application
+      app: curl-app
+  template:
+    metadata:
+      labels:
+        app: curl-app
+    spec:
+      containers:
+      - name: curl-app
+        image: governmentpaas/curl-ssl:49b59e8c30e33d120d4cca5a8f3b92ed808f52bc
+        command: ["sleep", "3600"]
