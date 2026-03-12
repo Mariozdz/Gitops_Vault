@@ -5,6 +5,7 @@ metadata:
 spec:
 
   sources:
+    #- useDefaultCAs: true
     - secret:
         name: root-ca
         key: ca.crt

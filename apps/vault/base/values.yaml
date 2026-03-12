@@ -59,6 +59,9 @@ server:
 
           tls_cert_file = "/vault/ssl/tls.crt"
           tls_key_file = "/vault/ssl/tls.key"
+          
+          tls_client_ca_file = "/vault/ssl/ca.crt"
+          tls_disable_client_certs = "false"
         }
 
         storage "raft" {
