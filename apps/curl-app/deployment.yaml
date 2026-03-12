@@ -31,7 +31,13 @@ spec:
               mountPath: /etc/pki/internal/ca.crt
               subPath: ca.crt
               readOnly: true
+            - name: vault-client-cert
+              mountPath: /etc/vault-client
+              readOnly: true
       volumes:
         - name: cluster-trust
           configMap:
             name: cluster-trust
+        - name: vault-client-cert
+          secret:
+            secretName: vault-client-test-tls
