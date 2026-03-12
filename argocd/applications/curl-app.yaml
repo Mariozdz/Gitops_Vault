@@ -6,6 +6,8 @@ metadata:
   # annotations:
   #   argocd.argoproj.io/sync-wave: "0"
 spec:
+  project: default
+  
   source:
     repoURL: https://github.com/Mariozdz/Gitops_Vault.git
     path: apps/curl-app
