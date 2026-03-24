@@ -3,18 +3,19 @@ global:
 
 server:
   extraLabels:
-    app.kubernetes.io/name-test: vault-server
+    app.kubernetes.io/name-test: openbao-server
     app.kubernetes.io/component: server
     security-tier: critical
 
   service:
     labels:
-      app.kubernetes.io/name-svc-test: vault-svc-test
+      app.kubernetes.io/name-svc-test: openbao-svc-test
       security-tier: critical
 
   image:
-    repository: hashicorp/vault
-    tag: "1.21.2"
+    registry: quay.io
+    repository: openbao/openbao
+    tag: "2.5.1"
 
   standalone:
     enabled: false
@@ -26,17 +27,17 @@ server:
     fsGroup: 1000
 
   volumes:
-    - name: vault-tls
+    - name: openbao-tls
       secret:
-        secretName: vault-tls
+        secretName: openbao-tls
         defaultMode: 0400
     - name: cluster-trust
       configMap:
         name: cluster-trust
 
   volumeMounts:
-    - name: vault-tls
-      mountPath: /vault/ssl
+    - name: openbao-tls
+      mountPath: /openbao/ssl
       readOnly: true
     - name: cluster-trust
       mountPath: /etc/ssl/certs/cluster-ca.pem
@@ -57,18 +58,18 @@ server:
           address     = "0.0.0.0:8200"
           cluster_address = "0.0.0.0:8201"
 
-          tls_cert_file = "/vault/ssl/tls.crt"
-          tls_key_file = "/vault/ssl/tls.key"
+          tls_cert_file = "/openbao/ssl/tls.crt"
+          tls_key_file = "/openbao/ssl/tls.key"
           
-          tls_client_ca_file = "/vault/ssl/ca.crt"
+          tls_client_ca_file = "/openbao/ssl/ca.crt"
           tls_disable_client_certs = "false"
         }
 
         storage "raft" {
-          path = "/vault/data"
+          path = "/openbao/data"
         }
 
-        api_addr = "https://vault.vault.svc:8200"
+        api_addr = "https://openbao.openbao.svc:8200"
         service_registration "kubernetes" {}
 
   dataStorage:
@@ -78,7 +79,7 @@ server:
 injector:
   enabled: true
   extraLabels:
-    app.kubernetes.io/name-test: vault-agent-injector-test
+    app.kubernetes.io/name-test: bao-agent-injector-test
     security-tier: critical
 
 ui:
