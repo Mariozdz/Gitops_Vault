@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
   - ./mtls/cluster-issuer-ca.yaml
   - ./mtls/vault-server-cert.yaml
+  - ./mtls/openbao-server-cert.yaml
   - ./trust-manager/trust-bundle.yaml
   - ./client-certificate
