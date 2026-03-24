@@ -1,0 +1,23 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: openbao-server-cert
+  namespace: openbao
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  secretName: openbao-tls
+  issuerRef:
+    name: vault-ca-issuer
+    kind: ClusterIssuer
+  commonName: openbao.openbao.svc.cluster.local
+  dnsNames:
+    - openbao
+    - openbao.openbao
+    - openbao.openbao.svc
+    - openbao.openbao.svc.cluster.local
+  ipAddresses:
+    - 127.0.0.1
+  privateKey:
+    algorithm: RSA
+    size: 2048
