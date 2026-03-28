@@ -47,3 +47,13 @@ spec:
         - ports:
             - port: "443"
               protocol: TCP
+    # Repos Helm / OCI 
+    - toFQDNs:
+        - matchName: helm.releases.hashicorp.com
+        - matchName: charts.jetstack.io
+        - matchName: quay.io
+        - matchName: helm.cilium.io
+      toPorts:
+        - ports:
+            - port: "443"
+              protocol: TCP
