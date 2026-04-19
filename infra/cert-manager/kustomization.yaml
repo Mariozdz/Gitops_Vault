@@ -2,8 +2,6 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
 resources:
-  - ./mtls/cluster-issuer-ca.yaml
-  - ./mtls/vault-server-cert.yaml
-  - ./mtls/openbao-server-cert.yaml
+  - ./mtls
   - ./trust-manager/trust-bundle.yaml
   - ./client-certificate

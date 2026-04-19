@@ -15,7 +15,7 @@ spec:
     helm:
       releaseName: trust-manager
       valueFiles:
-        - $values/apps/cert-manager/base/trust-manager-values.yaml
+        - $values/argocd/chart-values/cert-manager/trust-manager-values.yaml
 
   - repoURL: https://github.com/Mariozdz/Gitops_Vault.git
     targetRevision: main
