@@ -1,5 +1,5 @@
-#!/usr/bin/env sh
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 . ./00-env.sh
 
-vault status
+kubectl exec -n "$VAULT_NAMESPACE" "$VAULT_POD_NAME" -- vault status
